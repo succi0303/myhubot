@@ -2,19 +2,32 @@
 #   リマインダー
 
 CronJob = require('cron').CronJob
+random = require('hubot').Response::random
+
+envelope = { room: '#general' }
+username = 'succi0303'
+timezone = 'Asia/Tokyo'
 
 module.exports = (robot) ->
-  wakeup_weekday = new CronJob
-    cronTime: '0 52 16 * * 1-5'
-    onTick: ->
-      robot.send { room: '#general' }, '@succi0303: おはよございます！起きてください！'
-    timeZone: 'Asia/Tokyo'
-  wakeup_weekday.start()
+  wakeup_greets = [
+    'おはようございます！起きてください！',
+    '起きて起きて起きてーーーー！',
+    '今日も一日頑張りましょう。',
+    '朝ですよー！'
+  ]
 
-module.exports = (robot) ->
-  wakeup_holiday = new CronJob
-    cronTime: '0 53 16 * * 1-5'
+  # wake up on weekdays
+  new CronJob
+    cronTime: '*/20 30 6 * * 1-5'
     onTick: ->
-      robot.send { room: '#general' }, '@succi0303: テステス'
-    timeZone: 'Asia/Tokyo'
-  wakeup_holiday.start()
+      robot.send envelope, "@#{username}: " + random(wakeup_greets)
+    start: true
+    timeZone: timezone
+
+  # wake up on holidays
+  new CronJob
+    cronTime: '*/20 0 8 * * 0,6'
+    onTick: ->
+      robot.send envelope, "@#{username}: " + random(wakeup_greets)
+    start: true
+    timeZone: timezone
