@@ -25,7 +25,7 @@ module.exports = (robot) ->
 
   # wake up on weekdays
   new CronJob
-    cronTime: '*/20 30 6 * * 1-5'
+    cronTime: '0 30,40,50 6 * * 1-5'
     onTick: ->
       robot.send envelope, "@#{username}: " + random(wakeup_greets)
     start: true
@@ -33,7 +33,7 @@ module.exports = (robot) ->
 
   # wake up on holidays
   new CronJob
-    cronTime: '*/20 0 8 * * 0,6'
+    cronTime: '0 0 8 * * 0,6'
     onTick: ->
       robot.send envelope, "@#{username}: " + random(wakeup_greets)
     start: true
