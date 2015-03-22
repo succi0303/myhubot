@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+deploy:
+  provider: heroku
+  api_key:
+    secure: S+3PeZgjPU+3TCXyD7fwtlZNK7b/sY8x5B7nh52m4JG8/A2Bcr0+FJ5aYsCCgk0fMGMdkP/b/bZpRf7m3wwoU0EWl28/sYGD8895dWPg9CluKGVYoy6FwNLLtdhsjnIGcRRVGriChKlTRlgWd8Q9sXkUYHTELGpAMT9/o1lQs/M=
+  app: lit-chamber-4172
+  on: master
