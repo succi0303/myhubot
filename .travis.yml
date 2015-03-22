@@ -7,7 +7,7 @@ deploy:
   api_key:
     secure: k4cxDFyk7Tumvxw48us31+oShpuDEkO2PWW8CXo+SAOKr18QAQjsBecFxnURKF377chK5s46PEc1HC54e5LpiXUK2gEzyophnGMO8lBr7xABxKO6uuyUOqGEVaJW/PsMcvLxYk6iuTfvYvxiouPLtSC1VuS5UBYYPYhEpWE6oUU=
   app:
-    master: lit-chamber-4172
+    master: kshkn-bot
   on:
     repo: succi0303/myhubot
   run:
