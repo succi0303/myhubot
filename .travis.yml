@@ -10,3 +10,5 @@ deploy:
     master: lit-chamber-4172
   on:
     repo: succi0303/myhubot
+  run:
+    - restart
