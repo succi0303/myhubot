@@ -1,5 +1,5 @@
 # Description:
-#   Notify build status from Heroku deployhook
+#   Notifies build status from Heroku Deploy Hooks
 #
 # Dependencies:
 #   None
@@ -19,13 +19,9 @@ module.exports = (robot) ->
     envelope = { room: '#general' }
 
     robot.send envelope, """
-    [Heroku deployhook]
-    app       : #{req.body.app}
-    user      : #{req.body.user}
-    url       : #{req.body.url}
-    head      : #{req.body.head}
-    head_long : #{req.body.head_long}
-    git_log   : #{req.body.git_log}
-    release   : #{req.body.release}
+    [Heroku Deploy Hooks]
+    #{req.body.user} deployed #{req.body.app}
+    Release: #{req.body.release}, Head: #{req.body.head}
+    open at #{req.body.url}
     """
     res.send "ok"
