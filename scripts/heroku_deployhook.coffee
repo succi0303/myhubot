@@ -24,11 +24,11 @@ module.exports = (robot) ->
 
     robot.send envelope, """
     [Heroku deployhook]
-    app: #{query.app}
-    user: #{query.user}
-    url: #{query.url}
-    head: #{query.head}
-    head_long: #{query.head_long}
-    git_log: #{query.git_log}
-    release: #{query.release}
+    app       : #{query.app}
+    user      : #{query.user}
+    url       : #{query.url}
+    head      : #{query.head}
+    head_long : #{query.head_long}
+    git_log   : #{query.git_log}
+    release   : #{query.release}
     """
