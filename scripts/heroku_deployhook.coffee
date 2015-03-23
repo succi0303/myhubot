@@ -16,16 +16,16 @@
 
 module.exports = (robot) ->
   robot.router.post "/heroku_deployhook", (req, res) ->
-    payload = JSON.parse req.body.payload
     envelope = { room: '#general' }
 
     robot.send envelope, """
     [Heroku deployhook]
-    app       : #{payload.app}
-    user      : #{payload.user}
-    url       : #{payload.url}
-    head      : #{payload.head}
-    head_long : #{payload.head_long}
-    git_log   : #{payload.git_log}
-    release   : #{payload.release}
+    app       : #{req.body.app}
+    user      : #{req.body.user}
+    url       : #{req.body.url}
+    head      : #{req.body.head}
+    head_long : #{req.body.head_long}
+    git_log   : #{req.body.git_log}
+    release   : #{req.body.release}
     """
+    res.send "ok"
