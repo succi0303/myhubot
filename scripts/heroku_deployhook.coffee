@@ -14,21 +14,18 @@
 #   succi0303
 #
 
-url = require('url')
-querystring = require('querystring')
-
 module.exports = (robot) ->
   robot.router.post "/heroku_deployhook", (req, res) ->
-    query = querystring.parse url.parse(req.url).query
+    payload = JSON.parse req.body.payload
     envelope = { room: '#general' }
 
     robot.send envelope, """
     [Heroku deployhook]
-    app       : #{query.app}
-    user      : #{query.user}
-    url       : #{query.url}
-    head      : #{query.head}
-    head_long : #{query.head_long}
-    git_log   : #{query.git_log}
-    release   : #{query.release}
+    app       : #{payload.app}
+    user      : #{payload.user}
+    url       : #{payload.url}
+    head      : #{payload.head}
+    head_long : #{payload.head_long}
+    git_log   : #{payload.git_log}
+    release   : #{payload.release}
     """
