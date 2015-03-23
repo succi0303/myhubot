@@ -1,5 +1,5 @@
 # Description:
-#   Notifies build status from Heroku Deploy Hooks
+#   Notifies build status on heroku by Heroku Deploy Hooks
 #
 # Dependencies:
 #   None
@@ -8,20 +8,19 @@
 #   None
 #
 # URLS:
-#   POST /heroku_deployhook
+#   POST /heroku_deployhooks
 #
 # Author:
 #   succi0303
 #
 
 module.exports = (robot) ->
-  robot.router.post "/heroku_deployhook", (req, res) ->
+  robot.router.post "/heroku_deployhooks", (req, res) ->
     envelope = { room: '#general' }
 
     robot.send envelope, """
-    [Heroku Deploy Hooks]
-    #{req.body.user} deployed #{req.body.app}
-    Release: #{req.body.release}, Head: #{req.body.head}
-    open at #{req.body.url}
+    Herokuからデプロイの通知が届きました。
+    '#{req.body.app}' was deployed by #{req.body.user}
+    Release: #{req.body.release}, Head: #{req.body.head}, Run at: #{req.body.url}
     """
     res.send "ok"
