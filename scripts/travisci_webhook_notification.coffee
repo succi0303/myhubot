@@ -21,6 +21,7 @@ module.exports = (robot) ->
 
     robot.send envelope, """
     Travis CIからビルドの通知が届きました。
-    Build #{payload.number} for #{payload.repository.owner_name}/#{payload.repository.name} #{payload.status_message}
+    Build #{payload.number} #{payload.status_message} for #{payload.repository.name}:#{payload.branch} by #{payload.author_name}
+    Type: #{payload.type}, Build URL: #{payload.build_url}
     """
     res.send 'ok'
