@@ -17,8 +17,10 @@
 module.exports = (robot) ->
   robot.router.post "/travisci/webhook_notification", (req, res) ->
     envelope = { room: '#general' }
+    payload = JSON.parse req.body.payload
 
     robot.send envelope, """
-    Travis CIから通知が届きました。
+    Travis CIからビルドの通知が届きました。
+    Build #{payload.number} for #{payload.repository.owner_name}/#{payload.repository.name} #{payload.status_message}
     """
     res.send 'ok'
