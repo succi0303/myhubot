@@ -12,3 +12,7 @@ deploy:
     repo: succi0303/myhubot
   run:
     - restart
+notifications:
+  webhooks:
+    - https://kshsn-bot.herokuapp.com/travisci/webhook_notification
+  on_start: true
