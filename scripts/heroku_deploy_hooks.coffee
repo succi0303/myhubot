@@ -8,14 +8,14 @@
 #   None
 #
 # URLS:
-#   POST /heroku_deployhooks
+#   POST /heroku/deploy_hooks
 #
 # Author:
 #   succi0303
 #
 
 module.exports = (robot) ->
-  robot.router.post "/heroku_deployhooks", (req, res) ->
+  robot.router.post "/heroku/deploy_hooks", (req, res) ->
     envelope = { room: '#general' }
 
     robot.send envelope, """
