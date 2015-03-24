@@ -18,5 +18,7 @@ module.exports = (robot) ->
   robot.router.post "/travisci/webhook_notification", (req, res) ->
     envelope = { room: '#general' }
 
-    robot.send envelope, 'hi'
+    robot.send envelope, """
+    Travis CIから通知が届きました。
+    """
     res.send 'ok'
