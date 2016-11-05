@@ -13,10 +13,10 @@ module.exports = (robot) ->
   new CronJob
     cronTime: '0 0 12 * * *'
     onTick: ->
-      nowDate = new Date()
-      nowYear = nowDate.getYear()
-      nowMonth = nowDate.getMonth() + 1
-      nowDay = nowDate.getDate()
+      dt = new Date()
+      nowYear = dt.getFullYear()
+      nowMonth = dt.getMonth() + 1
+      nowDate = dt.getDate()
       dateStr = "#{nowYear}年#{nowMonth}月#{nowDate}日"
       robot.send envelope, "#{dateStr}の正午です。"
     start: true
